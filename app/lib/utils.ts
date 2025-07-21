@@ -11,3 +11,10 @@ export function formatSize(bytes: number): string {
 export function generateUUID() {
   return crypto.randomUUID();
 }
+
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
