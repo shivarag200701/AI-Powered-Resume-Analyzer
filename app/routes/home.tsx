@@ -1,5 +1,7 @@
+import { resumes } from "../../constants/index";
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
+import Navbar from "~/components/Navbar";
+import ResumeCard from "~/components/ResumeCard";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,5 +11,25 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return <Welcome />;
+  return (
+    <main className="bg-[url('/public/images/bg-main.svg')] bg-cover">
+      <Navbar />
+      <section className="main-section">
+        <div className="page-heading py-16">
+          <h1>Track your Applications & Resume Rating</h1>
+          <h2>Review your Resume and get AI-powered feedback.</h2>
+        </div>
+
+        {resumes.length > 0 && (
+          <div className="resumes-section">
+            {resumes.map((resume: Resume) => (
+              <div key={resume.id}>
+                <ResumeCard key={resume.id} resume={resume} />
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+    </main>
+  );
 }
