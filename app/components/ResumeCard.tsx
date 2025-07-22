@@ -5,7 +5,7 @@ import { usePuterStore } from "~/lib/puter.js";
 import { useEffect, useState } from "react";
 
 const ResumeCard = ({
-  resume: { id, companyName, jobTitle, feedback, imagePath },
+  resume: { uuid, companyName, jobTitle, feedback, imagePath },
 }: {
   resume: Resume;
 }) => {
@@ -24,7 +24,7 @@ const ResumeCard = ({
 
   return (
     <Link
-      to={`/resume/${id}`}
+      to={`/resume/${uuid}`}
       className="resume-card animate-in fade-in duration-1000"
     >
       <div className="resume-card-header">
